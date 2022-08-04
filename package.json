@@ -13,9 +13,9 @@
     "lint": "eslint .",
     "test": "vitest",
     "test:ui": "vitest --ui",
-    "postinstall": "yarn outdated --no-error-on-outdated",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "postinstall": "yarn outdated --no-error-on-outdated"
   },
   "dependencies": {
     "@testing-library/react": "^13.3.0",
@@ -25,12 +25,12 @@
   "devDependencies": {
     "@babel/core": "^7.18.10",
     "@ianvs/prettier-plugin-sort-imports": "^3.4.2",
-    "@storybook/addon-actions": "^6.5.9",
-    "@storybook/addon-essentials": "^6.5.9",
-    "@storybook/addon-interactions": "^6.5.9",
-    "@storybook/addon-links": "^6.5.9",
+    "@storybook/addon-actions": "^6.5.10",
+    "@storybook/addon-essentials": "^6.5.10",
+    "@storybook/addon-interactions": "^6.5.10",
+    "@storybook/addon-links": "^6.5.10",
     "@storybook/builder-vite": "^0.2.2",
-    "@storybook/react": "^6.5.9",
+    "@storybook/react": "^6.5.10",
     "@storybook/testing-library": "^0.0.13",
     "@types/react": "^18.0.15",
     "@types/react-dom": "^18.0.6",
@@ -44,7 +44,7 @@
     "husky": "^8.0.1",
     "lint-staged": "^13.0.3",
     "prettier": "^2.7.1",
-    "sass": "^1.54.0",
+    "sass": "^1.54.3",
     "typescript": "^4.7.4",
     "vite": "^3.0.0",
     "vite-tsconfig-paths": "^3.5.0",
