@@ -1,0 +1,36 @@
+.PrimitiveValue {
+  background-color: aquamarine;
+  border-radius: var(--border-radius-default);
+  padding: 5px 8px;
+  display: inline-grid;
+  place-items: center;
+  box-shadow: var(--box-shadow-medium);
+  font-size: 12px;
+  margin-left: 8px;
+}
+
+.ObjectValue {
+  background-color: sandybrown;
+  border-radius: var(--border-radius-round);
+  padding: 5px;
+  height: 35px;
+  width: 35px;
+  display: inline-grid;
+  place-items: center;
+  box-shadow: var(--box-shadow-medium);
+  font-size: 12px;
+  margin-left: 8px;
+}
+
+.FunctionValue {
+  background-color: lightskyblue;
+  border-radius: var(--border-radius-round);
+  padding: 5px;
+  height: 35px;
+  width: 35px;
+  display: inline-grid;
+  place-items: center;
+  box-shadow: var(--box-shadow-medium);
+  font-size: 12px;
+  margin-left: 8px;
+}

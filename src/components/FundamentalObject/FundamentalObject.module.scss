@@ -1,0 +1,26 @@
+.FundamentalObjectWrapper {
+  position: relative;
+
+  li {
+    margin-top: 4px;
+  }
+}
+
+.ListHeader {
+  margin-bottom: 8px;
+  text-decoration-line: underline;
+  text-decoration-style: dotted;
+  text-decoration-color: black;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 2px;
+}
+
+.ObjectInfo {
+  position: absolute;
+  width: 400px;
+  margin-top: 32px;
+  padding: 16px;
+  border-radius: var(--border-radius-default);
+  background-color: var(--color-white);
+  box-shadow: var(--box-shadow-medium);
+}

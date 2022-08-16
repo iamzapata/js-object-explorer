@@ -1,33 +1,145 @@
-import styles from "./FundamentalObject.module.css"
+import styles from './FundamentalObject.module.scss'
+import {
+  ClickableName,
+  Collapsible,
+  OwnProperties,
+  Proto,
+  Prototype,
+  PrototypeChainProperties,
+} from '@components'
+import ownPropertyStyles from '@components/OwnProperties/OwnProperties.module.scss'
+import protoStyles from '@components/Proto/Proto.module.scss'
+import prototypeChainStyles from '@components/PrototypeChainProperties/PrototypeChainProperties.module.scss'
+import { ObjectInfo, ObjectValue } from '@types'
+import { getObjectInformation } from '@utils/getObjectInformation'
+import classNames from 'classnames'
+import { Dispatch, SetStateAction } from 'react'
 
-const propertiesWithValues = (object) => {
-  const propList = Object.getOwnPropertyNames(object).sort()
-
-  return propList.reduce((accum, nextKey) => {
-    const value = Object[nextKey]
-
-    return [...accum, [nextKey, value]]
-  }, [])
+export type FundamentalObjectProps = {
+  object: ObjectValue
+  isExpanded: string | null
+  setIsExpanded: Dispatch<SetStateAction<string | null>>
 }
 
-export function FundamentalObject({ object }) {
-  return (
-    <div>
-      <div className={styles.ObjectName}>{object.name}</div>
+export function FundamentalObject({
+  object,
+  isExpanded,
+  setIsExpanded,
+}: FundamentalObjectProps) {
+  const objectInfo: ObjectInfo = getObjectInformation(object)
+  const {
+    name,
+    type,
+    constructor,
+    ownProperties,
+    prototypeChainProperties,
+    flatPrototypeChainProperties,
+    prototype, // need a beter name for this
+  } = objectInfo
 
-      <div className={styles.ObjectOwnProperties}>
-        <h2>Own Properties</h2>
-        <ul>
-          {propertiesWithValues(object).map(([key, value]) => (
-            <li key={key}>
-              <div>
-                <div>{key}</div>
-                <div>{propertiesWithValues(value)}</div>
+  const {
+    type: chainType,
+    name: chainName,
+    constructor: chainConstructor,
+  } = prototypeChainProperties
+
+  return (
+    <div className={classNames(styles.FundamentalObjectWrapper, 'code-font')}>
+      <ClickableName
+        name={name}
+        isExpanded={isExpanded}
+        setIsExpanded={setIsExpanded}
+      />
+      {isExpanded === name && (
+        <div className={styles.ObjectInfo}>
+          <ObjectType type={type} />
+
+          <ObjectConstructor objectConstructor={constructor} />
+
+          <Collapsible
+            header={
+              <div
+                className={classNames(
+                  styles.ListHeader,
+                  protoStyles.___proto___Header
+                )}
+              >
+                [[Prototype]]
               </div>
-            </li>
-          ))}
-        </ul>
-      </div>
+            }
+          >
+            <Proto ___proto___={Object.getPrototypeOf(object)} />
+          </Collapsible>
+
+          <Collapsible
+            header={
+              <div
+                className={classNames(
+                  styles.ListHeader,
+                  ownPropertyStyles.OwnPropertiesHeader
+                )}
+              >
+                Static Properties
+              </div>
+            }
+          >
+            <OwnProperties ownProperties={ownProperties} />
+          </Collapsible>
+
+          <Collapsible
+            header={
+              <div
+                className={classNames(
+                  styles.ListHeader,
+                  prototypeChainStyles.PrototypeChainProperiesHeader
+                )}
+              >
+                Inherited Properties
+              </div>
+            }
+          >
+            <PrototypeChainProperties
+              chainProperties={flatPrototypeChainProperties}
+            />
+          </Collapsible>
+
+          <Collapsible
+            header={
+              <div
+                className={classNames(
+                  styles.ListHeader,
+                  styles.___proto___Header
+                )}
+              >
+                Prototype Properties
+              </div>
+            }
+          >
+            <Prototype prototype={prototype} />
+          </Collapsible>
+        </div>
+      )}
+    </div>
+  )
+}
+
+function ObjectType({ type }: { type: ObjectInfo['type'] }) {
+  return (
+    <div className={styles.ObjectType}>
+      <strong>type: </strong>
+      {type}
+    </div>
+  )
+}
+
+function ObjectConstructor({
+  objectConstructor,
+}: {
+  objectConstructor: ObjectInfo['constructor']
+}) {
+  return (
+    <div className={styles.ObjectConstructor}>
+      <strong>constructor:</strong> {objectConstructor}
     </div>
   )
 }

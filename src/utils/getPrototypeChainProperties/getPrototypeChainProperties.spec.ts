@@ -67,6 +67,7 @@ describe('getPrototypeChainProperties', () => {
               "type": "function",
               "value": [Function],
             },
+            "arguments": "Throws TypeError",
             "bind": {
               "type": "function",
               "value": [Function],
@@ -75,6 +76,7 @@ describe('getPrototypeChainProperties', () => {
               "type": "function",
               "value": [Function],
             },
+            "caller": "Throws TypeError",
             "constructor": {
               "type": "function",
               "value": [Function],

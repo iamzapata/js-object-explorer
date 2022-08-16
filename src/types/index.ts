@@ -5,9 +5,18 @@ export type Properties =
     }
 
 export interface ValueAndType {
-  type: string
-  value: ObjectValue
+  key: string
+  value: PrimitiveValue | ObjectValue
 }
+
+export type PrimitiveValue =
+  | string
+  | number
+  | bigint
+  | boolean
+  | symbol
+  | null
+  | undefined
 
 export type PrototypeChainProperties = {
   [key: string]: PrototypeChainProperties | ProtoTypeObjectInfo
@@ -23,7 +32,6 @@ export interface ProtoTypeObjectInfo {
 export interface ObjectInfo {
   '[[Prototype]]': ObjectValue
   name?: string
-  description?: string
   type: string
   constructor: string
   ownProperties: Properties
@@ -32,7 +40,7 @@ export interface ObjectInfo {
   flatPrototypeChainProperties: ProtoTypeObjectInfo[]
 }
 
-type FundamentalObject =
+export type FundamentalObject =
   | typeof Object
   | typeof Function
   | typeof Boolean
@@ -68,26 +76,26 @@ type IndexedCollectionObject =
   | typeof BigInt64Array
   | typeof BigUint64Array
 
-type KeyedCollectionObject =
+export type KeyedCollectionObject =
   | typeof Map
   | typeof WeakMap
   | typeof Set
   | typeof WeakSet
 
-type StructuredDataObject =
+export type StructuredDataObject =
   | typeof ArrayBuffer
   | typeof SharedArrayBuffer
   | typeof Atomics
   | typeof DataView
   | typeof JSON
 
-type ControlAbstractionObject = typeof Promise
+export type ControlAbstractionObject = typeof Promise
 
-type ReflectionObject = typeof Reflect | typeof Proxy
+export type ReflectionObject = typeof Reflect | typeof Proxy
 
-type InternationalizationObject = typeof Intl
+export type InternationalizationObject = typeof Intl
 
-type WebAssemblyObject = typeof WebAssembly
+export type WebAssemblyObject = typeof WebAssembly
 
 export type ObjectValue =
   | FundamentalObject

@@ -1,9 +1,9 @@
-import { getPropertiesWithValues } from '@utils/getPropertiesWithValues'
 import {
   ObjectValue,
   ProtoTypeObjectInfo,
   PrototypeChainProperties,
-} from '@utils/types'
+} from '@types'
+import { getPropertiesWithValues } from '@utils/getPropertiesWithValues'
 
 export function getPrototypeChainProperties(
   object: ObjectValue,

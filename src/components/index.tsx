@@ -1,1 +1,0 @@
-export { FundamentalObject } from "./FundamentalObject"

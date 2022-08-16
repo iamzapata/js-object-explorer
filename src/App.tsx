@@ -1,13 +1,13 @@
-import { FundamentalObject } from './components'
+import { FundamentalObjectList } from '@components'
 
-import './App.css'
+import './App.scss'
 
 function App() {
   return (
-    <div className="App">
-      <h1>Standard built-in Objects</h1>
+    <div className="App GridThree">
+      <h1 className="text-center">Standard built-in Objects</h1>
 
-      <FundamentalObject object={Object} />
+      <FundamentalObjectList />
     </div>
   )
 }

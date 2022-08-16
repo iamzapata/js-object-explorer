@@ -1,12 +1,31 @@
-import { ObjectValue, ValueAndType } from '@utils/types'
+import { ObjectValue, ValueAndType } from '@types'
 
-const KEYS_TO_IGNORE = ['caller', 'callee', 'arguments']
+const PROBLEMATIC_PROPERTIES: string[] = [
+  'description',
+  'caller',
+  'callee',
+  'arguments',
+]
 
-export function getPropertiesWithValues(object: ObjectValue) {
+const isProblematicProperty = (property: string) => {
+  return PROBLEMATIC_PROPERTIES.includes(property)
+}
+
+const patchProperty = (accum: unknown, key: string) => {
+  accum[`${key}`] = 'Throws TypeError'
+  return accum
+}
+
+export function getPropertiesWithValues(
+  object: ObjectValue
+): Record<string, unknown> {
   const propList = Object.getOwnPropertyNames(object).sort()
 
   return propList.reduce((accum, nextKey) => {
-    if (KEYS_TO_IGNORE.includes(nextKey)) return accum
+    if (isProblematicProperty(nextKey)) {
+      patchProperty(accum, nextKey)
+      return accum
+    }
 
     const value: ObjectValue = object[nextKey as keyof ObjectValue]
     const type = typeof value
