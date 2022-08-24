@@ -8,21 +8,11 @@
     "allowSyntheticDefaultImports": true,
     "baseUrl": "./",
     "paths": {
-      "@components": [
-        "src/components/index.ts"
-      ],
-      "@styles/*": [
-        "src/styles/*"
-      ],
-      "@utils": [
-        "src/utils"
-      ],
-      "@utils/*": [
-        "src/utils/*"
-      ]
+      "@components": ["src/components/index.ts"],
+      "@styles/*": ["src/styles/*"],
+      "@utils": ["src/utils"],
+      "@utils/*": ["src/utils/*"]
     }
   },
-  "include": [
-    "vite.config.ts"
-  ]
+  "include": ["vite.config.ts"]
 }

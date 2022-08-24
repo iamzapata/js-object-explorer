@@ -1,7 +1,7 @@
 import { FundamentalObject as FundamentalObjectComponent } from '@components'
 import { Blockquote } from '@components'
-import { useState } from 'react'
 import { FundamentalObject } from '@types'
+import { useState } from 'react'
 
 const FUNDAMENTAL_OBJECTS: FundamentalObject[] = [
   Object,
@@ -22,9 +22,11 @@ export const FundamentalObjectList = () => {
 
       <Blockquote link={DESCRIPTION_LINK}>
         <Blockquote.Link description="MDN" />
-        These are the fundamental, basic objects upon which all other objects
-        are based. This includes general objects, booleans, functions, and
-        symbols.
+        <>
+          These are the fundamental, basic objects upon which all other objects
+          are based. This includes general objects, booleans, functions, and
+          symbols.
+        </>
       </Blockquote>
       <div className="d-flex justy-content-space-between">
         {FUNDAMENTAL_OBJECTS.map((object) => (

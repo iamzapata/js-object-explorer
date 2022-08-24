@@ -1,24 +1,13 @@
 import styles from './TypeAndValue.module.css'
-import { PrimitiveValue } from '@types'
+import { ObjectProperties } from '@types'
 
 type TypeAndValueProps = {
-  typeAndValue: {
-    type:
-      | 'string'
-      | 'number'
-      | 'bigint'
-      | 'boolean'
-      | 'symbol'
-      | 'function'
-      | 'object'
-      | 'undefined'
-    value: PrimitiveValue
-  }
+  value: ObjectProperties
 }
 
-export function TypeAndValue({
-  typeAndValue: { type, value },
-}: TypeAndValueProps) {
+export function TypeAndValue({ value }: TypeAndValueProps) {
+  const type = typeof value
+
   switch (type) {
     case 'string':
       return <PrimitiveDisplay value={value} wrapInQuotes />
@@ -41,7 +30,7 @@ function PrimitiveDisplay({
   value,
   wrapInQuotes,
 }: {
-  value: PrimitiveValue
+  value: ObjectProperties
   wrapInQuotes?: boolean
 }) {
   return (
@@ -51,7 +40,7 @@ function PrimitiveDisplay({
   )
 }
 
-function ObjectDisplay({ value }: { value: PrimitiveValue }) {
+function ObjectDisplay({ value }: { value: ObjectProperties }) {
   return value === null ? (
     <span>null</span>
   ) : (

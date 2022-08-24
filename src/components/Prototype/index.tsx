@@ -1,17 +1,17 @@
 import styles from './Prototype.module.scss'
 import { TypeAndValue } from '@components'
-import { Properties } from '@types'
+import { ObjectEntry, ObjectProperties } from '@types'
 
-export function Prototype({ prototype }: { prototype: Properties }) {
+export function Prototype({ prototype }: { prototype: ObjectProperties }) {
   if (!prototype) return null
 
   return (
     <div className={styles.PrototypeProperties}>
       <ul>
-        {Object.entries(prototype).map(([key, value]) => {
+        {Object.entries(prototype).map(([key, value]: ObjectEntry) => {
           return (
             <li key={key}>
-              <span>{key}</span> <TypeAndValue typeAndValue={value} />
+              <span>{key}</span> <TypeAndValue value={value} />
             </li>
           )
         })}

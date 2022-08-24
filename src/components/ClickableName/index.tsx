@@ -1,4 +1,5 @@
 import styles from './ClickableName.module.scss'
+import { FundamentalObjectProps } from '@components/FundamentalObject'
 import { ObjectInfo } from '@types'
 
 export function ClickableName({

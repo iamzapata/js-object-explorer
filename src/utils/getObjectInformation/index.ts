@@ -18,7 +18,6 @@ export function getObjectInformation(obj: ObjectValue) {
   const objectInfo: ObjectInfo = {
     '[[Prototype]]': Object.getPrototypeOf(obj),
     constructor: obj.constructor.name,
-    type: typeof obj,
     prototype,
     ownProperties,
     prototypeChainProperties,

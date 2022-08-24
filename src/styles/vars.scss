@@ -1,5 +1,4 @@
 :root {
-
   --color-white: hsl(60deg, 100%, 100%); // White
   --color-text: hsl(0deg 0% 16%); // Jet
   --color-background: hsl(225deg, 14%, 95%); // Cultured
@@ -34,7 +33,6 @@
   --border-radius-default: 6px;
   --border-radius-round: 100%;
 
-
   --syntax-prop: #da0079;
   --syntax-bool: #bf00b8;
   --syntax-val: hsl(200deg, 15%, 40%);
@@ -45,14 +43,14 @@
   --syntax-fn: #3d5afe;
   --syntax-bg: hsl(160deg 28% 20%);
   --shadow-color: 210deg 15% 6%;
-  --shadow-elevation-low: 0px 0.2px 0.3px hsl(var(--shadow-color) / 0.06),
+  --box-shadow-low: 0px 0.2px 0.3px hsl(var(--shadow-color) / 0.06),
     0px 0.5px 0.7px -0.6px hsl(var(--shadow-color) / 0.11),
     0px 1.1px 1.4px -1.2px hsl(var(--shadow-color) / 0.15);
-  --shadow-elevation-medium: 0px 0.2px 0.3px hsl(var(--shadow-color) / 0.07),
+  --box-shadow-medium: 0px 0.2px 0.3px hsl(var(--shadow-color) / 0.07),
     0px 1.1px 1.4px -0.4px hsl(var(--shadow-color) / 0.1),
     0px 2.4px 3.1px -0.8px hsl(var(--shadow-color) / 0.14),
     0.1px 5.4px 7.1px -1.2px hsl(var(--shadow-color) / 0.17);
-  --shadow-elevation-high: 0px 0.2px 0.3px hsl(var(--shadow-color) / 0.06),
+  --box-shadow-high: 0px 0.2px 0.3px hsl(var(--shadow-color) / 0.06),
     0px 2.3px 3px -0.2px hsl(var(--shadow-color) / 0.08),
     0.1px 4.3px 5.6px -0.4px hsl(var(--shadow-color) / 0.09),
     0.1px 6.6px 8.7px -0.5px hsl(var(--shadow-color) / 0.11),

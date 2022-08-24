@@ -9,7 +9,7 @@ export function PrototypeChainProperties({
 }) {
   return (
     <div className={styles.PrototypeChainProperies}>
-      {chainProperties.map(({ type, name, constructor, properties }) => {
+      {chainProperties.map(({ name, properties }) => {
         return (
           <div key={name}>
             <div className={styles.ChainObject}>{name}</div>
@@ -18,7 +18,7 @@ export function PrototypeChainProperties({
                 {Object.entries(properties).map(([key, value]) => (
                   <li key={key}>
                     <span>{key}</span>
-                    <TypeAndValue typeAndValue={value} />
+                    <TypeAndValue value={value} />
                   </li>
                 ))}
               </ul>

@@ -1,5 +1,5 @@
-import { getPropertiesWithValues } from '@utils/getPropertiesWithValues'
 import { ObjectValue } from '@types'
+import { getPropertiesWithValues } from '@utils/getPropertiesWithValues'
 
 export function getFunctionPrototypeProperties(object: ObjectValue) {
   if ('prototype' in object && typeof object === 'function') {
@@ -8,5 +8,5 @@ export function getFunctionPrototypeProperties(object: ObjectValue) {
     }
   }
 
-  return 'Not a constructor'
+  return null
 }

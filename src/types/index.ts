@@ -1,13 +1,10 @@
-export type Properties =
-  | undefined
+export type ObjectProperties =
   | {
-      [key: string]: Record<string, unknown> | undefined
+      isProblematic?: boolean
+      [key: string]: PrimitiveValue | (() => void)
     }
-
-export interface ValueAndType {
-  key: string
-  value: PrimitiveValue | ObjectValue
-}
+  | PrimitiveValue
+  | (() => void)
 
 export type PrimitiveValue =
   | string
@@ -23,7 +20,7 @@ export type PrototypeChainProperties = {
 }
 
 export interface ProtoTypeObjectInfo {
-  properties: Properties
+  properties: ObjectProperties
   type: string
   name: string
   constructor: string
@@ -32,29 +29,35 @@ export interface ProtoTypeObjectInfo {
 export interface ObjectInfo {
   '[[Prototype]]': ObjectValue
   name?: string
-  type: string
-  constructor: string
-  ownProperties: Properties
-  prototype: Properties
+  constructor?: string
+  prototype?: ObjectProperties
+  ownProperties: ObjectProperties
   prototypeChainProperties: PrototypeChainProperties
   flatPrototypeChainProperties: ProtoTypeObjectInfo[]
 }
 
+export type ObjectEntry = [key: string, value: ObjectProperties]
+
+//
+
+// I want to create a type of all of the object prototypes in javascript
+export type ObjectPrototype = Pick<ObjectConstructor, 'prototype'>
+
 export type FundamentalObject =
-  | typeof Object
-  | typeof Function
-  | typeof Boolean
-  | typeof Symbol
+  | ObjectConstructor
+  | FunctionConstructor
+  | BooleanConstructor
+  | SymbolConstructor
 
 export type ErrorObject =
-  | typeof Error
-  | typeof AggregateError
-  | typeof EvalError
-  | typeof RangeError
-  | typeof ReferenceError
-  | typeof SyntaxError
-  | typeof TypeError
-  | typeof URIError
+  | ErrorConstructor
+  | AggregateErrorConstructor
+  | EvalErrorConstructor
+  | RangeErrorConstructor
+  | ReferenceErrorConstructor
+  | SyntaxErrorConstructor
+  | TypeErrorConstructor
+  | URIErrorConstructor
 
 type NumberObject = typeof Number | typeof BigInt | typeof Math
 

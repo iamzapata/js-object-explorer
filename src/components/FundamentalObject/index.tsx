@@ -27,21 +27,21 @@ export function FundamentalObject({
   setIsExpanded,
 }: FundamentalObjectProps) {
   const objectInfo: ObjectInfo = getObjectInformation(object)
+
   const {
     name,
-    type,
     constructor,
     ownProperties,
-    prototypeChainProperties,
-    flatPrototypeChainProperties,
+/*     prototypeChainProperties,
+ */    flatPrototypeChainProperties,
     prototype, // need a beter name for this
   } = objectInfo
 
-  const {
+/*   const {
     type: chainType,
     name: chainName,
     constructor: chainConstructor,
-  } = prototypeChainProperties
+  } = prototypeChainProperties */
 
   return (
     <div className={classNames(styles.FundamentalObjectWrapper, 'code-font')}>
@@ -52,9 +52,14 @@ export function FundamentalObject({
       />
       {isExpanded === name && (
         <div className={styles.ObjectInfo}>
-          <ObjectType type={type} />
+          <div className={styles.ObjectType}>
+            <strong>type:</strong>
+            {typeof object}
+          </div>
 
-          <ObjectConstructor objectConstructor={constructor} />
+          <div className={styles.ObjectConstructor}>
+            <strong>constructor:</strong> {constructor}
+          </div>
 
           <Collapsible
             header={
@@ -119,27 +124,6 @@ export function FundamentalObject({
           </Collapsible>
         </div>
       )}
-    </div>
-  )
-}
-
-function ObjectType({ type }: { type: ObjectInfo['type'] }) {
-  return (
-    <div className={styles.ObjectType}>
-      <strong>type: </strong>
-      {type}
-    </div>
-  )
-}
-
-function ObjectConstructor({
-  objectConstructor,
-}: {
-  objectConstructor: ObjectInfo['constructor']
-}) {
-  return (
-    <div className={styles.ObjectConstructor}>
-      <strong>constructor:</strong> {objectConstructor}
     </div>
   )
 }

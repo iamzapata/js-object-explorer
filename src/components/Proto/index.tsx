@@ -1,10 +1,10 @@
 import styles from './Proto.module.scss'
 import { TypeAndValue } from '@components'
-import { ObjectValue } from '@types'
+import { ObjectEntry, ObjectPrototype } from '@types'
 import { getPropertiesWithValues } from '@utils/getPropertiesWithValues'
 
 type ProtoProps = {
-  ___proto___: ObjectValue
+  ___proto___: ObjectPrototype
 }
 export function Proto({ ___proto___ }: ProtoProps) {
   if (!___proto___) return null
@@ -14,9 +14,9 @@ export function Proto({ ___proto___ }: ProtoProps) {
   return (
     <div className={styles.___proto___}>
       <ul>
-        {Object.entries(propperties).map(([key, value]) => (
+        {Object.entries(propperties).map(([key, value]: ObjectEntry) => (
           <li key={key}>
-            <span>{key}</span> <TypeAndValue typeAndValue={value} />
+            <span>{key}</span> <TypeAndValue value={value} />
           </li>
         ))}
       </ul>

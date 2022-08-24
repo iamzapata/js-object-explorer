@@ -10,7 +10,7 @@ function BlockquoteLink({
   description,
   link,
 }: {
-  link: string
+  link?: string
   description: string
 }) {
   return (
